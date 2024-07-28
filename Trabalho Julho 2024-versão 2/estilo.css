@@ -1,0 +1,84 @@
+:root {
+    --cor-principal: #700000 ;
+    --cor-secundaria: #200B0B;
+    --cor-destaque: #FF2D55;
+    --cor-texto: #ffd7d7;
+  }
+
+html{
+    min-height: 100%;
+    background-image: url(bosque.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+body{
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+.caixa-principal {
+    background-color: var(--cor-principal);
+    max-width: 350px;
+    max-height: 350px auto;
+    text-align: center;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+
+
+h1{
+    color: var(--cor-destaque);
+    font-family: Copperplate Gothic;
+}
+
+p{
+    font-family: georgia;
+    font-size: 15px;
+}
+
+
+button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-destaque);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-secundaria)
+}
+
+
+.caixa-alternativas {
+    display: flex;         
+    flex-direction: column; 
+    gap: 5px;             
+    align-items: center;  
+}
+
+
+
+
+p.texto-resultado {
+    margin-top: 0%; 
+    padding: 0px; 
+}
+
+.texto-preto {
+    color: #000; 
+}
