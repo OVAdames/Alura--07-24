@@ -87,3 +87,8 @@ p.texto-resultado {
 .caixa-resultado.mostrar {
     display: block;
 }
+
+.novamente-btn {
+    border: 10px;
+    border-radius: 200px;
+}
