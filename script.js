@@ -16,16 +16,42 @@ const perguntas = [
                 afirmacao: [
                     "Ela andou pelo caminho que sua mãe sugeriu.",
                     "Caminhando pelo caminho iluminado não pensava que tinha perigo."
-                ]
+                ],
+                proxima: 1,
             },
             {
                 texto: "Pela Floresta.",
                 afirmacao: [
                     "Ela foi espertinha e andou pela floresta, mesmo com os perigos.",
                     "Ir pela floresta foi bem mais de boa do que imaginava."
-                ]
+                ],
+                proxima: 2,
             },
         ],
+        
+    },
+
+    {
+        enunciado: 
+            "No meio do caminho ela encontra um lago, ao lado tem um jardim de flores e caldas de gatos(planta). O que ela faz?",
+        alternativas: [
+            {
+                texto:"Pega algumas delas",
+                afirmacao: [
+                    "No caminho pegou algumas flores vermelhas e azuis, fazendo um pequeno buquê para sua avó.",
+                    "Ela pegou VÁRIAS flores para a sua vó, um buquê enorme pois não sabia a flor favorita da avó."
+                ],
+                proxima: 4,
+            },
+            {
+                texto:"Segue caminho",
+                afirmacao: [
+                    "Em vez de pegar algumas flores para avô, chapeuzinho apenas seguiu se caminho.", 
+                    "Passando pelo lago ela acabou pisando nas flores e as esmagou todas."
+                ],
+                proxima: 5,
+            },
+        ]
     },
 
     {
@@ -37,14 +63,16 @@ const perguntas = [
                 afirmacao: [
                     "Falando a verdade resultou no lobo a seguindo.",
                     "Ela foi uma boa menina contando a verdade para o lobo, por sorte ele não a seguiu."
-                ]
+                ],
+                proxima: 3,
             },
             {
                 texto:"Uma mentira, que ia pescar com o pai.",
                 afirmacao: [
                     "E mentiu, mas por isso ficou segura do lobo, já que não a seguiu.", 
                     "No seu caminho mentiu, mas era necessário para chegar segura na casa."
-                ]
+                ],
+                proxima: 4,
             },
         ]
     },
@@ -59,14 +87,16 @@ const perguntas = [
                 afirmacao: [
                     "E andou até anoitecer, já que ficou pegando flores para sua avó. Mas trouxe um pequeno buquê de flores amarelas e laranjas.",
                     "No caminho pegou flores amarelas e laranjas, por sorte não ficou até anoitecer."
-                ]
+                ],
+                proxima: 4,
             },
             {
                 texto: "Ela o ignora e volta a andar",
                 afirmacao: [
                 "E chegou ainda de dia na casa.",
                 "Ignorando o lobo fez ele nosnar para chapeuzinho, o que fez ela se assustar e sair correndo, mas chegou cedo na casa."
-                ]
+                ],
+                proxima: 5,
             },
         ]
     },
@@ -123,7 +153,12 @@ function mostraAlternativas() {
 function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
-    atual++;
+    if(opcaoSelecionada.proxima !== undefined) {
+        atual = opcaoSelecionada.proxima;
+    }else{
+        mostraResultado();
+        return;
+    }
     mostraPergunta();
 }
 
