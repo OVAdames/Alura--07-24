@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 :root {
     --cor-principal: #700000 ;
     --cor-secundaria: #200B0B;
@@ -20,6 +22,7 @@ body{
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    font-family: 'georgia', serif;
   }
 
 .caixa-principal {
@@ -40,11 +43,11 @@ body{
 
 h1{
     color: var(--cor-destaque);
-    font-family: Copperplate Gothic;
+    font-family: "Libre Baskerville", serif;
+    
 }
 
 p{
-    font-family: georgia;
     font-size: 15px;
 }
 
@@ -67,14 +70,20 @@ button:hover {
 .caixa-alternativas {
     display: flex;         
     flex-direction: column; 
-    gap: 5px;             
+    gap: 10px;             
     align-items: center;  
 }
-
-
 
 
 p.texto-resultado {
     margin-top: 0%; 
     padding: 0px; 
+}
+
+.caixa-resultado{
+    display:none;
+}
+
+.caixa-resultado.mostrar {
+    display: block;
 }

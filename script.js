@@ -3,6 +3,8 @@ const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
+const botaoJogarNovamente = document.querySelector(".novamente-btn");
+
 
 const perguntas = [
     {
@@ -11,11 +13,17 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Pelo caminho iluminado.",
-                afirmacao: "Ela andou pelo caminho que sua mãe sugeriu.",
+                afirmacao: [
+                    "Ela andou pelo caminho que sua mãe sugeriu.",
+                    "Caminhando pelo caminho iluminado não pensava que tinha perigo."
+                ]
             },
             {
                 texto: "Pela Floresta.",
-                afirmacao: "Ela foi espertinha e andou pela floresta, mesmo com os perigos.",
+                afirmacao: [
+                    "Ela foi espertinha e andou pela floresta, mesmo com os perigos.",
+                    "Ir pela floresta foi bem mais de boa do que imaginava."
+                ]
             },
         ],
     },
@@ -26,11 +34,17 @@ const perguntas = [
         alternativas: [
             {
                 texto:"A verdade, que iria para casa da avó.",
-                afirmacao: "Falando a verdade resultou no lobo a seguindo.",
+                afirmacao: [
+                    "Falando a verdade resultou no lobo a seguindo.",
+                    "Ela foi uma boa menina contando a verdade para o lobo, por sorte ele não a seguiu."
+                ]
             },
             {
                 texto:"Uma mentira, que ia pescar com o pai.",
-                afirmacao: "E mentiu, mas por isso ficou segura do lobo, já que não a seguiu.",
+                afirmacao: [
+                    "E mentiu, mas por isso ficou segura do lobo, já que não a seguiu.", 
+                    "No seu caminho mentiu, mas era necessário para chegar segura na casa."
+                ]
             },
         ]
     },
@@ -42,11 +56,17 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Ela segue a sugestão.",
-                afirmacao: "E andou até anoitecer, já que ficou pegando flores para sua avó. Mas trouxe um pequeno buquê de flores amarelas e laranjas.",
+                afirmacao: [
+                    "E andou até anoitecer, já que ficou pegando flores para sua avó. Mas trouxe um pequeno buquê de flores amarelas e laranjas.",
+                    "No caminho pegou flores amarelas e laranjas, por sorte não ficou até anoitecer."
+                ]
             },
             {
                 texto: "Ela o ignora e volta a andar",
-                afirmacao: "E chegou ainda de dia na casa.",
+                afirmacao: [
+                "E chegou ainda de dia na casa.",
+                "Ignorando o lobo fez ele nosnar para chapeuzinho, o que fez ela se assustar e sair correndo, mas chegou cedo na casa."
+                ]
             },
         ]
     },
@@ -54,15 +74,21 @@ const perguntas = [
 
     {
         enunciado: 
-        "Chegando na casa da sua avó, chapeuzinho vê um lenhador cortando lenha na frente da casa. Ela faz o que?",
+        "Chegando na casa da sua avó, chapeuzinho vê um homen cortando lenha na frente da casa. Ela faz o que?",
         alternativas: [
             {
                 texto: "Ela dá oi antes de entrar.",
-                afirmacao: "Acabou chamando atenção do homen desconhecido. E quando chapeuzinho encontra uma criatura que não era sua avó ela tenta fugir, mas a porta já estava trancada.",
+                afirmacao: [
+                "Acabou chamando atenção do homen desconhecido. E quando chapeuzinho encontra uma criatura que não era sua avó ela tenta fugir, mas a porta já estava trancada.",
+                "Acabou assustando o lenhador que quase cortou seu pé. Ele ficou puto com chapeuzinho e correu até ela, correndo rápidamente ela conseguiu se trancar na casa em segurança. Assim se escondeu na sua avó até o dia seguinte."
+                ]
             },
             {
                 texto: "Ela ignora o homen.",
-                afirmacao: "Depois de uma aventura e tanto para chegar na sua avó, chapeuzinho pode apreciar o pão caseiro com sua querida avó",
+                afirmacao: [
+                    "Depois de uma aventura e tanto para chegar na sua avó, chapeuzinho pode apreciar o pão caseiro com sua querida avó",
+                    "Mesmo se precavendo em todo seu caminho, quem a esperava na cama de sua avó não era ela."
+                ]
             },
         ]
     },
@@ -95,7 +121,7 @@ function mostraAlternativas() {
 }
 
 function respostaSelecionada(opcaoSelecionada){
-    const afirmacoes = opcaoSelecionada.afirmacao;
+    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
@@ -105,6 +131,20 @@ function mostraResultado() {
     caixaPerguntas.textContent = "A chapeuzinho chegou na casa da sua avó...";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
+    caixaResultado.classList.add("mostrar")
+    botaoJogarNovamente.addEventListener("click", jogaNovamente)
+}
+
+function aleatorio (lista){
+    const posicao = Math.floor(Math.random()* lista.length);
+    return lista[posicao];
+}
+
+function jogaNovamente(){
+    atual = 0;
+    historiaFinal = "";
+    caixaResultado.classList.remove("mostrar")
+    mostraPergunta();
 }
 
 mostraPergunta();
